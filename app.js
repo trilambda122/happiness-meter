@@ -1,11 +1,41 @@
 const express = require('express');
 const app = express();
-
+const mongoose = require('mongoose');
 // add logging to  our application
 const morgan = require('morgan');
 app.use(morgan('dev'));
 
-// setu up route for /happy
+//setup express to parse JSON form the request body
+app.use(express.json());
+
+// CORS handling
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+  );
+  if (req.method === 'OPTIONS') {
+    res.header('Access-Control-Allow-Methods', 'PUT, PATCH, POST, DELETE, GET');
+    return res.status(200).json({});
+  }
+  next();
+});
+
+mongoose
+  .connect(
+    'mongodb+srv://trilambda122:' +
+      process.env.MONGO_DB_PW +
+      '@cluster0.jlxfk.mongodb.net/happiness?retryWrites=true&w=majority',
+    { useNewUrlParser: true, useUnifiedTopology: true }
+  )
+  .then(() => {
+    console.log('CONNECTED TO DATABASE');
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+// setup route for /happy
 const happyRoutes = require('./api/routes/happy');
 app.use('/happy', happyRoutes);
 
