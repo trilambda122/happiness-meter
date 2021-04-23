@@ -41,6 +41,9 @@ mongoose.Promise = global.Promise;
 const happyRoutes = require('./api/routes/happy');
 app.use('/happy', happyRoutes);
 
+// setup routes for /users
+const userRoutes = require('./api/routes/user');
+app.use('/users', userRoutes);
 // setup of default route to catch anything not in a specfic route and will throw an 404 not found error
 app.use((req, res, next) => {
   const error = new Error('Not found');
