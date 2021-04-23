@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const happySchema = mongoose.Schema({
-  _id: mongoose.Types.ObjectId,
+  _id: mongoose.Schema.Types.ObjectId,
   date: Date,
   happyScore: Number,
   sleepHours: Number,
