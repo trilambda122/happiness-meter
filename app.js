@@ -27,7 +27,7 @@ mongoose
     'mongodb+srv://trilambda122:' +
       process.env.MONGO_DB_PW +
       '@cluster0.jlxfk.mongodb.net/happiness?retryWrites=true&w=majority',
-    { useNewUrlParser: true, useUnifiedTopology: true }
+    { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }
   )
   .then(() => {
     console.log('CONNECTED TO DATABASE');

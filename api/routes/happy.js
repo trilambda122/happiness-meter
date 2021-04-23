@@ -3,9 +3,12 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
+const checkAuth = require('../middleware/check-auth');
 // import mongoose models
 const Happy = require('../models/happy');
+
 // GET ROUTE
+//-------------------------------------//
 router.get('/', (req, res, next) => {
   Happy.find()
     .select(
@@ -44,13 +47,10 @@ router.get('/', (req, res, next) => {
       console.log(err);
       res.status(500).json({ error: err });
     });
-
-  // res.status('200').json({
-  //   message: 'GET....HAPPINESS!',
-  // });
 });
 
 // GET ONE ITEM
+//-------------------------------------//
 router.get('/:happyId', (req, res, next) => {
   //EXAMPLE URl:  localhost:5000/happy/6082bf69ada1d25622423fa2
   const id = req.params.happyId;
@@ -73,6 +73,7 @@ router.get('/:happyId', (req, res, next) => {
 });
 
 // PATCH
+//-------------------------------------//
 //EXAMPLE URl:  localhost:5000/happy/6082bf69ada1d25622423fa2
 router.patch('/:happyId', (req, res, next) => {
   const id = req.params.happyId;
@@ -96,6 +97,7 @@ router.patch('/:happyId', (req, res, next) => {
 });
 
 // DELETE
+//-------------------------------------//
 //EXAMPLE URl:  localhost:5000/happy/6082bf69ada1d25622423fa2
 router.delete('/:happyId', (req, res, next) => {
   const id = req.params.happyId;
@@ -111,7 +113,8 @@ router.delete('/:happyId', (req, res, next) => {
 });
 
 // POST ONE ITEM
-router.post('/', (req, res, next) => {
+//-------------------------------------//
+router.post('/', checkAuth, (req, res, next) => {
   const happyRecord = new Happy({
     _id: new mongoose.Types.ObjectId(),
     date: Date.now(),
