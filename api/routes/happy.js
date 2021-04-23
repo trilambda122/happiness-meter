@@ -5,14 +5,30 @@ const router = express.Router();
 const mongoose = require('mongoose');
 // import mongoose models
 const Happy = require('../models/happy');
-// get route
+// GET ROUTE
 router.get('/', (req, res, next) => {
-  res.status('200').json({
-    message: 'GET....HAPPINESS!',
-  });
+  Happy.find()
+    .exec()
+    .then((results) => {
+      if (results.length >= 0) {
+        res.status(200).json(results);
+      } else {
+        res.status(404).json({
+          message: 'No documents found... looks like the collection is empty',
+        });
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ error: err });
+    });
+
+  // res.status('200').json({
+  //   message: 'GET....HAPPINESS!',
+  // });
 });
 
-// get route for one item
+// GET ONE ITEM
 router.get('/:happyId', (req, res, next) => {
   //EXAMPLE URl:  localhost:5000/happy/6082bf69ada1d25622423fa2
   const id = req.params.happyId;
@@ -28,30 +44,48 @@ router.get('/:happyId', (req, res, next) => {
         });
       }
     })
+    .catch((err) => {});
+});
+
+// PATCH
+//EXAMPLE URl:  localhost:5000/happy/6082bf69ada1d25622423fa2
+router.patch('/:happyId', (req, res, next) => {
+  const id = req.params.happyId;
+  const updateOps = {};
+  for (const ops of req.body) {
+    updateOps[ops.propName] = ops.value;
+  }
+  Happy.updateOne({ _id: id }, { $set: updateOps })
+    .exec()
+    .then((result) => {
+      console.log(result);
+      res.status(200).json(result);
+    })
     .catch((err) => {
       console.log(err);
       res.status(500).json({ error: err });
     });
   // res.status('200').json({
-  //   message: `GET....HAPPY! with id: ${id}`,
+  //   message: `Updating....HAPPY! with id: ${id}`,
   // });
 });
-// patch route
-router.patch('/:happyId', (req, res, next) => {
-  const id = req.params.happyId;
-  res.status('200').json({
-    message: `Updating....HAPPY! with id: ${id}`,
-  });
-});
-// delete one item route
+
+// DELETE
+//EXAMPLE URl:  localhost:5000/happy/6082bf69ada1d25622423fa2
 router.delete('/:happyId', (req, res, next) => {
   const id = req.params.happyId;
-  res.status('200').json({
-    message: `Deleting your ...Happiness! with id: ${id}`,
-  });
+  Happy.remove({ _id: id })
+    .exec()
+    .then((result) => {
+      res.status(200).json(result);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ error: err });
+    });
 });
 
-// post route for adding an item
+// POST ONE ITEM
 router.post('/', (req, res, next) => {
   const happyRecord = new Happy({
     _id: new mongoose.Types.ObjectId(),
