@@ -35,6 +35,8 @@ mongoose
   .catch((err) => {
     console.log(err);
   });
+
+mongoose.Promise = global.Promise;
 // setup route for /happy
 const happyRoutes = require('./api/routes/happy');
 app.use('/happy', happyRoutes);

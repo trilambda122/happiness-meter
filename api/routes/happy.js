@@ -1,5 +1,5 @@
 // route file for /happy url
-
+// Shane Schilling 4-20-2021
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
@@ -8,10 +8,32 @@ const Happy = require('../models/happy');
 // GET ROUTE
 router.get('/', (req, res, next) => {
   Happy.find()
+    .select(
+      '_id date happyScore sleepHours kindness exerciseLevel kindnessNote gratitudeNote'
+    )
     .exec()
     .then((results) => {
+      const response = {
+        count: results.length,
+        happyItems: results.map((result) => {
+          return {
+            _id: result._id,
+            date: result.date,
+            happyScore: result.happyScore,
+            sleepHours: result.sleepHours,
+            kindness: result.kindness,
+            exerciseLevel: result.exerciseLevel,
+            kindnessNote: result.kindnessNote,
+            gratitudeNote: result.gratitudeNote,
+            info: {
+              type: 'GET',
+              url: `http://localhost:5000/happy/${result._id}`,
+            },
+          };
+        }),
+      };
       if (results.length >= 0) {
-        res.status(200).json(results);
+        res.status(200).json(response);
       } else {
         res.status(404).json({
           message: 'No documents found... looks like the collection is empty',
@@ -33,6 +55,9 @@ router.get('/:happyId', (req, res, next) => {
   //EXAMPLE URl:  localhost:5000/happy/6082bf69ada1d25622423fa2
   const id = req.params.happyId;
   Happy.findById(id)
+    .select(
+      '_id date happyScore sleepHours kindness exerciseLevel kindnessNote gratitudeNote'
+    )
     .exec()
     .then((doc) => {
       console.log(doc);
@@ -100,15 +125,29 @@ router.post('/', (req, res, next) => {
   });
 
   happyRecord.save().then((result) => {
+    console.log(result);
     res
-      .status('200')
+      .status(201)
       .json({
-        message: 'SUCCESSFUL...POST....HAPPINESS!',
-        happyRecord: result,
+        message: 'SUCCESSFUL...CREATED....HAPPINESS!',
+        happyRecord: {
+          _id: result._id,
+          date: result.date,
+          happyScore: result.happyScore,
+          sleepHours: result.sleepHours,
+          kindness: result.kindness,
+          exerciseLevel: result.exerciseLevel,
+          kindnessNote: result.kindnessNote,
+          gratitudeNote: result.gratitudeNote,
+          info: {
+            type: 'GET',
+            url: `http://localhost:5000/happy/${result._id}`,
+          },
+        },
       })
       .catch((err) => {
         res.status(500).json({
-          message: 'SUCCESSFUL...POST....HAPPINESS!',
+          message: 'SOMETHING HAS GONE WRONG',
           error: err,
         });
         console.log(err);
