@@ -8,7 +8,7 @@ const happyController = require('../controllers/happyController');
 //-------------------------------------//
 ////EXAMPLE URl:  localhost:5000/happy/
 
-router.get('/', checkAuth, happyController.happy_get_all);
+router.get('/', happyController.happy_get_all);
 
 // GET ONE ITEM
 //-------------------------------------//

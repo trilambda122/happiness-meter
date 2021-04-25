@@ -1,10 +1,11 @@
+//IMPORTS
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-// add logging to  our application
 const morgan = require('morgan');
 app.use(morgan('dev'));
 
+require('dotenv').config();
 //setup express to parse JSON form the request body
 app.use(express.json());
 
@@ -21,7 +22,8 @@ app.use((req, res, next) => {
   }
   next();
 });
-
+// connect to database
+// console.log('app env is: ', process.env.MONGO_DB_PW);
 mongoose
   .connect(
     'mongodb+srv://trilambda122:' +
@@ -35,8 +37,8 @@ mongoose
   .catch((err) => {
     console.log(err);
   });
-
 mongoose.Promise = global.Promise;
+
 // setup route for /happy
 const happyRoutes = require('./api/routes/happy');
 app.use('/happy', happyRoutes);
@@ -44,6 +46,7 @@ app.use('/happy', happyRoutes);
 // setup routes for /users
 const userRoutes = require('./api/routes/user');
 app.use('/users', userRoutes);
+
 // setup of default route to catch anything not in a specfic route and will throw an 404 not found error
 app.use((req, res, next) => {
   const error = new Error('Not found');
