@@ -1,5 +1,5 @@
+// IMPORTS
 const mongoose = require('mongoose');
-// import mongoose models
 const Happy = require('../models/happy');
 
 // GET ALL CONTROLLER
@@ -46,8 +46,8 @@ exports.happy_get_all = (req, res, next) => {
 
 // GET ONE ITEM
 //-------------------------------------//
+//EXAMPLE URl:  localhost:5000/happy/6082bf69ada1d25622423fa2
 exports.happy_get_one = (req, res, next) => {
-  //EXAMPLE URl:  localhost:5000/happy/6082bf69ada1d25622423fa2
   const id = req.params.happyId;
   Happy.findById(id)
     .select(
@@ -87,9 +87,6 @@ exports.happy_update_one = (req, res, next) => {
       console.log(err);
       res.status(500).json({ error: err });
     });
-  // res.status('200').json({
-  //   message: `Updating....HAPPY! with id: ${id}`,
-  // });
 };
 
 // DELETE ONE ITEM
@@ -111,6 +108,17 @@ exports.happy_delete_one = (req, res, next) => {
 
 // POST ONE ITEM
 //-------------------------------------//
+// EXAMPLE JSON:
+// {
+//   "happyScore": "3",
+//   "sleepHours": "5",
+//   "kindness": "true",
+//   "exercise": "true",
+//   "exerciseLevel": "high",
+//   "kindnessNote": "did something super nice",
+//   "gratitudeNote": "just blessed"
+// }
+
 exports.happy_add_one = (req, res, next) => {
   const happyRecord = new Happy({
     _id: new mongoose.Types.ObjectId(),
