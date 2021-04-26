@@ -93,16 +93,16 @@ exports.user_login = (req, res, next) => {
   User.find({ email: email })
     .exec()
     .then((user) => {
-      console.log('find user is:', user);
+      // console.log('find user is:', user);
       if (user.length < 1) {
-        res.status(401).json({
+        return res.status(401).json({
           message: 'Authorization failed',
         });
       }
       // check if password hases match
-      console.log('password from database: ', user[0].password);
+      //console.log('password from database: ', user[0].password);
       bcrypt.compare(password, user[0].password, (err, result) => {
-        console.log('the bcrypt result is: ', result);
+        // console.log('the bcrypt result is: ', result);
         if (err) {
           return res.status(401).json({
             message: 'Authorization failed',
