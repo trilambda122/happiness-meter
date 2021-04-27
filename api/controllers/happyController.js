@@ -133,7 +133,6 @@ exports.happy_add_one = (req, res, next) => {
   });
 
   happyRecord.save().then((result) => {
-    console.log(result);
     res
       .status(201)
       .json({
