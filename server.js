@@ -1,10 +1,9 @@
-// const http = require('http');
+
 const https = require('https');
 const fs = require('fs');
 const path = require('path');
 const app = require('./app');
 const PORT = process.env.PORT || 5443;
-// const server = http.createServer(app);
 
 const httpOptions = {
   key: fs.readFileSync(path.join(__dirname, 'cert', 'key.pem')),

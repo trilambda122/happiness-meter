@@ -65,12 +65,14 @@ exports.user_create_one = (req, res, next) => {
 //example URL:   http://localhost:5000/users/60855f0ecf003179cf09f2ff
 
 exports.user_delete_one = (req, res, next) => {
-  User.remove({ _id: req.params.userId })
+  console.log('ID IS-->', req.params.userId);
+  User.deleteOne({ _id: req.params.userId })
     .exec()
     .then((result) => {
       res.status(200).json({
         message: 'User Deleted',
       });
+      console.log(result);
     })
     .catch((err) => {
       console.log(err);
@@ -93,16 +95,16 @@ exports.user_login = (req, res, next) => {
   User.find({ email: email })
     .exec()
     .then((user) => {
-      console.log('find user is:', user);
+      // console.log('find user is:', user);
       if (user.length < 1) {
-        res.status(401).json({
+        return res.status(401).json({
           message: 'Authorization failed',
         });
       }
       // check if password hases match
-      console.log('password from database: ', user[0].password);
+      //console.log('password from database: ', user[0].password);
       bcrypt.compare(password, user[0].password, (err, result) => {
-        console.log('the bcrypt result is: ', result);
+        // console.log('the bcrypt result is: ', result);
         if (err) {
           return res.status(401).json({
             message: 'Authorization failed',

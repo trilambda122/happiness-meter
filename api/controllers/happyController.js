@@ -133,32 +133,29 @@ exports.happy_add_one = (req, res, next) => {
   });
 
   happyRecord.save().then((result) => {
-    console.log(result);
-    res
-      .status(201)
-      .json({
-        message: 'SUCCESSFUL...CREATED....HAPPINESS!',
-        happyRecord: {
-          _id: result._id,
-          date: result.date,
-          happyScore: result.happyScore,
-          sleepHours: result.sleepHours,
-          kindness: result.kindness,
-          exerciseLevel: result.exerciseLevel,
-          kindnessNote: result.kindnessNote,
-          gratitudeNote: result.gratitudeNote,
-          info: {
-            type: 'GET',
-            url: `http://localhost:5000/happy/${result._id}`,
-          },
+    res.status(201).json({
+      message: 'SUCCESSFUL...CREATED....HAPPINESS!',
+      happyRecord: {
+        _id: result._id,
+        date: result.date,
+        happyScore: result.happyScore,
+        sleepHours: result.sleepHours,
+        kindness: result.kindness,
+        exerciseLevel: result.exerciseLevel,
+        kindnessNote: result.kindnessNote,
+        gratitudeNote: result.gratitudeNote,
+        info: {
+          type: 'GET',
+          url: `http://localhost:5000/happy/${result._id}`,
         },
-      })
-      .catch((err) => {
-        res.status(500).json({
-          message: 'SOMETHING HAS GONE WRONG',
-          error: err,
-        });
-        console.log(err);
-      });
+      },
+    });
+    // .catch((err) => {
+    //   res.status(500).json({
+    //     message: 'SOMETHING HAS GONE WRONG',
+    //     error: err,
+    //   });
+    //   console.log(err);
+    // });
   });
 };
