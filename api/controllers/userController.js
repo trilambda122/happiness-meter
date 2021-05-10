@@ -66,7 +66,7 @@ exports.user_create_one = (req, res, next) => {
 
 exports.user_delete_one = (req, res, next) => {
   console.log('ID IS-->', req.params.userId);
-  User.deleteOne({ _id: req.params.userId })
+  User.remove({ _id: req.params.userId })
     .exec()
     .then((result) => {
       res.status(200).json({
