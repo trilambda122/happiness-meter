@@ -5,7 +5,7 @@ const env = require('dotenv').config();
 const mongoose = require('mongoose');
 
 let userToken = '';
-let userId = '';
+let happyRecordId = '';
 // SETUP
 beforeAll(async () => {
   const res = await request(app)
@@ -32,16 +32,18 @@ beforeAll(async () => {
       kindnessNote: 'did something super nice',
       gratitudeNote: 'just blessed',
     });
-  userId = happyRecordResponse.body.happyRecord._id;
+  happyRecordId = happyRecordResponse.body.happyRecord._id;
+  console.log(happyRecordId);
 });
 
 // TEARDOWN
 afterAll(async (done) => {
   const happyDeleteResponse = await request(app)
-    .post(`/users/${userId}`)
+    .delete(`/users/${happyRecordId}`)
     .set('Content-Type', 'application/json')
     .set('Authorization', userToken);
 
+  console.log('DELETE RESPONSE:', happyDeleteResponse.body);
   // Closing the DB connection allows Jest to exit successfully.
   mongoose.connection.close();
   done();
@@ -57,7 +59,7 @@ describe('GET ALL HAPPY RECORDS', () => {
     done();
   });
 
-  it('should  return 401 when not sent with user token ', async (done) => {
+  it('should return 401 when not sent with proper user token ', async (done) => {
     const res = await request(app)
       .get('/happy/')
       .set('Content-Type', 'application/json')
@@ -65,4 +67,14 @@ describe('GET ALL HAPPY RECORDS', () => {
     expect(res.status).toBe(401);
     done();
   });
+});
+
+it('should return a single record', async (done) => {
+  res = await request(app)
+    .get(`/happy/${happyRecordId}`)
+    .set('Content-Type', 'application/json')
+    .set('Authorization', userToken);
+  console.log(res.body);
+  expect(res.status).toBe(200);
+  done();
 });
