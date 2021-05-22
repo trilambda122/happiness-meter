@@ -1,0 +1,45 @@
+### USER LOGIN SHOULD RETURN A JWT TOKEN 
+ POST  https://localhost:5443/users/login HTTP/1.1
+content-type: application/json
+
+{
+    "email": "dude@sschilling.com",
+    "password": "dude"
+    
+}
+
+### GET REQUEST FOR SINGLE RECORD
+GET  https://localhost:5443/happy/6082de6f6e15435dc84765a5
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImR1ZGVAc3NjaGlsbGluZy5jb20iLCJ1c2VySWQiOiI2MDgzMGY0NmM5N2M2MjY2NTg2ZjM5ODAiLCJpYXQiOjE2MjE2OTg3NjcsImV4cCI6MTYyMTcwMjM2N30.fMT16sfoPFBJMpe_4lgTaVrPrf671PCz3GiRVyKu1_c
+
+
+### GET REQUEST THAT RETURNS ALL RECORDS 
+GET https://localhost:5443/happy/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImR1ZGVAc3NjaGlsbGluZy5jb20iLCJ1c2VySWQiOiI2MDgzMGY0NmM5N2M2MjY2NTg2ZjM5ODAiLCJpYXQiOjE2MjE2OTg3NjcsImV4cCI6MTYyMTcwMjM2N30.fMT16sfoPFBJMpe_4lgTaVrPrf671PCz3GiRVyKu1_c
+
+
+### POST REQUEST TO ADD A SINGLE RECORD 
+POST https://localhost:5443/happy/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImR1ZGVAc3NjaGlsbGluZy5jb20iLCJ1c2VySWQiOiI2MDgzMGY0NmM5N2M2MjY2NTg2ZjM5ODAiLCJpYXQiOjE2MjE2OTkyMzAsImV4cCI6MTYyMTcwMjgzMH0.PbmVquYt3lMLKhqqJcf13TEvAlLTtheLti7NBntPaYM
+content-type: application/json
+
+{
+    "happyScore": "3",
+    "sleepHours": "5",
+    "kindness": "true",
+    "exercise": "true",
+    "exerciseLevel": "high",
+    "kindnessNote": "did something super nice",
+    "gratitudeNote": "just blessed"
+} 
+
+### ADD USER 
+POST  https://localhost:5443/users/signup
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImR1ZGVAc3NjaGlsbGluZy5jb20iLCJ1c2VySWQiOiI2MDgzMGY0NmM5N2M2MjY2NTg2ZjM5ODAiLCJpYXQiOjE2MjE2OTkyMzAsImV4cCI6MTYyMTcwMjgzMH0.PbmVquYt3lMLKhqqJcf13TEvAlLTtheLti7NBntPaYM
+content-type: application/json
+
+{
+    "email": "dude5@dude.com",
+    "password": "dude"
+    
+}
