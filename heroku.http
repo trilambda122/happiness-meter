@@ -1,0 +1,11 @@
+
+
+
+ POST  https://happy-m-api.herokuapp.com/users/login HTTP/1.1
+content-type: application/json
+
+{
+    "email": "dude@sschilling.com",
+    "password": "dude"
+    
+}
