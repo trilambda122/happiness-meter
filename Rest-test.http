@@ -24,27 +24,25 @@ DELETE  https://localhost:5443/users/6086007bbd461dbfd38222bc
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImR1ZGVAc3NjaGlsbGluZy5jb20iLCJ1c2VySWQiOiI2MDgzMGY0NmM5N2M2MjY2NTg2ZjM5ODAiLCJpYXQiOjE2MjE4Njc0MDYsImV4cCI6MTYyMTg3MTAwNn0.wCAQs9WoxgQ_E6g4qYJYym-_n8p5fIbXe9JpEqsJ3eM
 ### GET REQUEST FOR SINGLE HAPPY RECORD
 GET  https://localhost:5443/happy/6082de6f6e15435dc84765a5
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImR1ZGVAc3NjaGlsbGluZy5jb20iLCJ1c2VySWQiOiI2MDgzMGY0NmM5N2M2MjY2NTg2ZjM5ODAiLCJpYXQiOjE2MjE4NjYyNzUsImV4cCI6MTYyMTg2OTg3NX0.hYISe8m4Nsc2hYGsKlG-VEPdDDPtuqLoQ07rfzdrw3I
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImR1ZGVAc3NjaGlsbGluZy5jb20iLCJ1c2VySWQiOiI2MDgzMGY0NmM5N2M2MjY2NTg2ZjM5ODAiLCJpYXQiOjE2MjE4ODI5NTEsImV4cCI6MTYyMTg4NjU1MX0.gm0w2VBOxePPh3d98QFx2zZ30JHqcBRIZKQFcSG1JGE
 
 
 ### GET REQUEST THAT RETURNS ALL  HAPPY RECORDS 
 GET https://localhost:5443/happy/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImR1ZGVAc3NjaGlsbGluZy5jb20iLCJ1c2VySWQiOiI2MDgzMGY0NmM5N2M2MjY2NTg2ZjM5ODAiLCJpYXQiOjE2MjE2OTg3NjcsImV4cCI6MTYyMTcwMjM2N30.fMT16sfoPFBJMpe_4lgTaVrPrf671PCz3GiRVyKu1_c
-
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImR1ZGVAc3NjaGlsbGluZy5jb20iLCJ1c2VySWQiOiI2MDgzMGY0NmM5N2M2MjY2NTg2ZjM5ODAiLCJpYXQiOjE2MjE4ODI5NTEsImV4cCI6MTYyMTg4NjU1MX0.gm0w2VBOxePPh3d98QFx2zZ30JHqcBRIZKQFcSG1JGE
 ### POST REQUEST TO ADD A SINGLE HAPPY RECORD 
 POST https://localhost:5443/happy/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImR1ZGVAc3NjaGlsbGluZy5jb20iLCJ1c2VySWQiOiI2MDgzMGY0NmM5N2M2MjY2NTg2ZjM5ODAiLCJpYXQiOjE2MjE4NjYyNzUsImV4cCI6MTYyMTg2OTg3NX0.hYISe8m4Nsc2hYGsKlG-VEPdDDPtuqLoQ07rfzdrw3I
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImR1ZGVAc3NjaGlsbGluZy5jb20iLCJ1c2VySWQiOiI2MDgzMGY0NmM5N2M2MjY2NTg2ZjM5ODAiLCJpYXQiOjE2MjE4ODI5NTEsImV4cCI6MTYyMTg4NjU1MX0.gm0w2VBOxePPh3d98QFx2zZ30JHqcBRIZKQFcSG1JGE
 content-type: application/json
 
 {
     "happyScore": "4",
-    "sleepHours": "8",
+    "sleepHours": "12",
     "kindness": "true",
     "exercise": "true",
     "exerciseLevel": "high",
-    "kindnessNote": "doing some random act of kindness",
-    "gratitudeNote": "just blessed to be able to do stuff like that"
+    "kindnessNote": "doing some random act of kindness feel great!",
+    "gratitudeNote": "Loving IT!"
 } 
 
 ### UPDATE A HAPPINESS RECORD 

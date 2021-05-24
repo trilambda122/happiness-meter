@@ -95,6 +95,47 @@ Time:        4.819 s, estimated 17 s
 Ran all test suites.
 ```
 
+
+## Example 
+
+Create a Record example:
+```
+POST https://localhost:5443/happy/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImR1ZGVAc3NjaGlsbGluZy5jb20iLCJ1c2VySWQiOiI2MDgzMGY0NmM5N2M2MjY2NTg2ZjM5ODAiLCJpYXQiOjE2MjE4ODI5NTEsImV4cCI6MTYyMTg4NjU1MX0.gm0w2VBOxePPh3d98QFx2zZ30JHqcBRIZKQFcSG1JGE
+content-type: application/json
+
+{
+    "happyScore": "4",
+    "sleepHours": "12",
+    "kindness": "true",
+    "exercise": "true",
+    "exerciseLevel": "high",
+    "kindnessNote": "doing some random act of kindness feel great!",
+    "gratitudeNote": "Loving IT!"
+} 
+```
+
+Create a Record expected JSON return
+```
+
+{
+  "message": "SUCCESSFUL...CREATED....HAPPINESS!",
+  "happyRecord": {
+    "_id": "60abf8baaaa9ec145232ed5e",
+    "date": "2021-05-24T19:04:26.144Z",
+    "happyScore": 4,
+    "sleepHours": 12,
+    "kindness": true,
+    "exerciseLevel": "high",
+    "kindnessNote": "doing some random act of kindness feel great!",
+    "gratitudeNote": "Loving IT!",
+    "info": {
+      "type": "GET",
+      "url": "http://localhost:5000/happy/60abf8baaaa9ec145232ed5e"
+    }
+  }
+}
+```
 ### Questions
 Please direct any additonal questions to: shane@sschilling.com
 
