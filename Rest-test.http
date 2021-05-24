@@ -46,6 +46,19 @@ content-type: application/json
     "kindnessNote": "doing some random act of kindness",
     "gratitudeNote": "just blessed to be able to do stuff like that"
 } 
+
+### UPDATE A HAPPINESS RECORD 
+PATCH https://localhost:5443/happy/60abb862749a3d0d5360cfd3
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImR1ZGVAc3NjaGlsbGluZy5jb20iLCJ1c2VySWQiOiI2MDgzMGY0NmM5N2M2MjY2NTg2ZjM5ODAiLCJpYXQiOjE2MjE4Njk4MTYsImV4cCI6MTYyMTg3MzQxNn0.A9DCyGfEczO3AHZ9qfoNpw4SUoy7Ejz7wmpDSts5TFk
+content-type: application/json
+
+[
+    {
+        "propName":"sleepHours",
+    "value": "10"
+    }
+]
+
 ### DELETE A SINGLE HAPPY RECORD 
 DELETE  https://localhost:5443/happy/60abb813f1de790d05d01d08
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImR1ZGVAc3NjaGlsbGluZy5jb20iLCJ1c2VySWQiOiI2MDgzMGY0NmM5N2M2MjY2NTg2ZjM5ODAiLCJpYXQiOjE2MjE4NjYyNzUsImV4cCI6MTYyMTg2OTg3NX0.hYISe8m4Nsc2hYGsKlG-VEPdDDPtuqLoQ07rfzdrw3I
