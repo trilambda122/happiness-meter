@@ -95,7 +95,7 @@ exports.happy_update_one = (req, res, next) => {
 
 exports.happy_delete_one = (req, res, next) => {
   const id = req.params.happyId;
-  Happy.remove({ _id: id })
+  Happy.deleteOne({ _id: id })
     .exec()
     .then((result) => {
       res.status(200).json(result);
