@@ -33,7 +33,7 @@ beforeAll(async () => {
       gratitudeNote: 'just blessed',
     });
   happyRecordId = happyRecordResponse.body.happyRecord._id;
-  console.log(happyRecordId);
+  // console.log(happyRecordId);
 });
 
 // TEARDOWN
@@ -43,7 +43,7 @@ afterAll(async (done) => {
     .set('Content-Type', 'application/json')
     .set('Authorization', userToken);
 
-  console.log('DELETE RESPONSE:', happyDeleteResponse.body);
+  // console.log('DELETE RESPONSE:', happyDeleteResponse.body);
   // Closing the DB connection allows Jest to exit successfully.
   mongoose.connection.close();
   done();
@@ -74,7 +74,7 @@ it('should return a single record', async (done) => {
     .get(`/happy/${happyRecordId}`)
     .set('Content-Type', 'application/json')
     .set('Authorization', userToken);
-  console.log(res.body);
+  // console.log(res.body);
   expect(res.status).toBe(200);
   done();
 });

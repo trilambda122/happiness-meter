@@ -55,7 +55,7 @@ exports.happy_get_one = (req, res, next) => {
     )
     .exec()
     .then((doc) => {
-      console.log(doc);
+      // console.log(doc);
       if (doc) {
         res.status(200).json(doc);
       } else {
