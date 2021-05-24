@@ -12,7 +12,7 @@ const httpOptions = {
 
 const sslServer = https
   .createServer(httpOptions, app)
-  .listen(5443, function () {
+  .listen(PORT, function () {
     console.log(
       `==> 🌎  Listening on port ${PORT}. Visit http://localhost:${PORT}/ in your browser.`
     );
