@@ -1,4 +1,4 @@
-# Happiness Meter Reference Backend API
+# Happiness Meter, a reference backend API
 
 The Happiness Meter is a full CRUD API meant to be used as a reference template for future projects.
 
@@ -12,9 +12,9 @@ The Happiness Meter is a full CRUD API meant to be used as a reference template 
 6. Provides CORS handling
 7. Has .http file with use with the REST client extension for VSCODE 
 
-### Setup 
 
-### File Structure 
+
+## File Structure 
 
  - API/routes  - contains the route files. Each route references the URL to be matched,  authorization middleware, and the function to run when the route is matched.  The functions are referenced in the controller files. 
 
@@ -38,19 +38,24 @@ The Happiness Meter is a full CRUD API meant to be used as a reference template 
 MONGO_DB_PW="mongo_passowred"
 JWT_KEY="jwt secret key"
 
-### Useage
+## Useage
 In the project directory, you can run:
+
 > npm run dev
+
 Runs the app in the development mode.
 
-### Contribitors
+## Contribitors
 Shane Schilling - shane@sschilling.com
 
-### Testing
+Github profile  - http://github.com/trilambda122
+
+## Testing
 Application utilizes Jest as the testing platform
+
 > npm run test 
 
-
+**Sample output** 
 ```
 POST /users/login 200 2663.587 ms - 263
 POST /users/login 200 2701.383 ms - 263
