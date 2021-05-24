@@ -8,6 +8,7 @@ content-type: application/json
     
 }
 
+
 ### ADD USER 
 POST  https://localhost:5443/users/signup
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImR1ZGVAc3NjaGlsbGluZy5jb20iLCJ1c2VySWQiOiI2MDgzMGY0NmM5N2M2MjY2NTg2ZjM5ODAiLCJpYXQiOjE2MjE2OTkyMzAsImV4cCI6MTYyMTcwMjgzMH0.PbmVquYt3lMLKhqqJcf13TEvAlLTtheLti7NBntPaYM
