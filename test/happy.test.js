@@ -39,7 +39,7 @@ beforeAll(async () => {
 // TEARDOWN
 afterAll(async (done) => {
   const happyDeleteResponse = await request(app)
-    .delete(`/users/${happyRecordId}`)
+    .delete(`/happy/${happyRecordId}`)
     .set('Content-Type', 'application/json')
     .set('Authorization', userToken);
 
