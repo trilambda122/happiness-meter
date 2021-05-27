@@ -117,8 +117,8 @@ exports.user_login = (req, res, next) => {
             process.env.JWT_KEY,
             { expiresIn: '1h' }
           );
-
-          return res.status(200).json({
+          // res.cookie('cookieName',randomNumber, { maxAge: 900000, httpOnly: true });
+          return res.status(200).cookie('token',token,{ maxAge: 3600000, httpOnly: true, secure: true }).json({
             message: 'Authorization Success!',
             token: token,
           });
