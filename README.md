@@ -4,7 +4,7 @@ The Happiness Meter is a full CRUD API meant to be used as a reference template 
 
 ## Major Features. 
 
-1. Runs over HTTPS
+1. Can be deployed using https or http
 2. Utilizes JWT tokens for authorization and security 
 3. Includes full test suite using Jest 
 4. Utilizes Mongoose as ODM 
