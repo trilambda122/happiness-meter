@@ -10,9 +10,15 @@ const httpOptions = {
   cert: fs.readFileSync(path.join(__dirname, 'cert', 'cert.pem')),
 };
 
-const sslServer = https
-  .createServer(httpOptions, app)
-  .listen(PORT, function () {
+// const sslServer = https
+//   .createServer(httpOptions, app)
+//   .listen(PORT, function () {
+//     console.log(
+//       `==> 🌎  Listening on port ${PORT}. Visit http://localhost:${PORT}/ in your browser.`
+//     );
+//   });
+
+  app.listen(PORT, function () {
     console.log(
       `==> 🌎  Listening on port ${PORT}. Visit http://localhost:${PORT}/ in your browser.`
     );

@@ -118,7 +118,7 @@ exports.user_login = (req, res, next) => {
             { expiresIn: '1h' }
           );
           // res.cookie('cookieName',randomNumber, { maxAge: 900000, httpOnly: true });
-          return res.status(200).cookie('token',token,{ maxAge: 3600000, httpOnly: true, secure: true }).json({
+          return res.status(200).cookie('token',token,{ maxAge: 3600000, httpOnly: true, secure: false }).json({
             message: 'Authorization Success!',
             token: token,
           });
