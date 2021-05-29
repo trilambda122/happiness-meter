@@ -9,6 +9,7 @@
   },
   "scripts": {
     "test": "jest",
+    "client": "cd ./happiness-frontend && npm start",
     "dev": "nodemon server.js",
     "start": "node server.js"
   },
