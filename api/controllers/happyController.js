@@ -5,6 +5,8 @@ const Happy = require('../models/happy');
 // GET ALL CONTROLLER
 //-------------------------------------//
 exports.happy_get_all = (req, res, next) => {
+  const rawCookies = req.headers.cookie.split('; ');
+  console.log('I LOVE RAS COOKIES',rawCookies)
   Happy.find()
     .select(
       '_id date happyScore sleepHours kindness exerciseLevel kindnessNote gratitudeNote'
