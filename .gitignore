@@ -107,3 +107,4 @@ nodemon.json
 nodemon.old
 .env
 http-mocks/
+unsplash.http
