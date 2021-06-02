@@ -14,7 +14,6 @@ exports.happy_get_all = (req, res, next) => {
       const response = {
         count: results.length,
         happyItems: results.map((result) => {
-          console.log(result)
           return {
             _id: result._id,
             date: result.date,
