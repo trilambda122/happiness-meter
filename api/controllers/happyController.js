@@ -7,13 +7,14 @@ const Happy = require('../models/happy');
 exports.happy_get_all = (req, res, next) => {
   Happy.find()
     .select(
-      '_id date happyScore sleepHours kindness exerciseLevel kindnessNote gratitudeNote'
+      '_id date happyScore sleepHours kindness exercise exerciseLevel kindnessNote gratitudeNote'
     )
     .exec()
     .then((results) => {
       const response = {
         count: results.length,
         happyItems: results.map((result) => {
+          console.log(result)
           return {
             _id: result._id,
             date: result.date,
