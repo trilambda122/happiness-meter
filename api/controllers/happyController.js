@@ -20,6 +20,7 @@ exports.happy_get_all = (req, res, next) => {
             happyScore: result.happyScore,
             sleepHours: result.sleepHours,
             kindness: result.kindness,
+            exercise: result.exercise,
             exerciseLevel: result.exerciseLevel,
             kindnessNote: result.kindnessNote,
             gratitudeNote: result.gratitudeNote,
