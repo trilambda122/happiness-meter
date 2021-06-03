@@ -11,11 +11,11 @@ function getRandomBoolean() {
   function getExerciseLevel(){
     const number = Math.floor(Math.random() * (1 + 3 - 1)) + 1
     switch(true){
-        case (number < 1):
+        case (number <= 1):
             return 'low'
-        case (number <2):
+        case (number <=2):
             return 'med'
-        case (number >3):
+        case (number >=3):
             return 'high'
         default:
             return "none"
