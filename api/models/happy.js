@@ -7,7 +7,7 @@ const happySchema = mongoose.Schema({
   sleepHours: { type: Number, required: true },
   exercise: { type: Boolean, required: true },
   kindness: { type: Boolean, required: true },
-  exerciseLevel: { type: String, required: true },
+  exerciseLevel: String,
   kindnessNote: String,
   gratitudeNote: String,
 });
