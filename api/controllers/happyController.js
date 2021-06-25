@@ -7,13 +7,14 @@ const axios = require('axios')
 exports.happy_get_all = (req, res, next) => {
   Happy.find()
     .select(
-      '_id date happyScore sleepHours kindness exercise exerciseLevel kindnessNote gratitudeNote'
+      '_id date happyScore sleepHours kindness exercise exerciseLevel kindnessNote gratitudeNote quote'
     )
     .exec()
     .then((results) => {
       const response = {
         count: results.length,
         happyItems: results.map((result) => {
+          
           return {
             _id: result._id,
             date: result.date,
@@ -24,6 +25,7 @@ exports.happy_get_all = (req, res, next) => {
             exerciseLevel: result.exerciseLevel,
             kindnessNote: result.kindnessNote,
             gratitudeNote: result.gratitudeNote,
+            quote: result.quote,
             info: {
               type: 'GET',
               url: `http://localhost:5000/happy/${result._id}`,
