@@ -61,6 +61,7 @@ content-type: application/json
 DELETE  https://localhost:5443/happy/60abb813f1de790d05d01d08
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImR1ZGVAc3NjaGlsbGluZy5jb20iLCJ1c2VySWQiOiI2MDgzMGY0NmM5N2M2MjY2NTg2ZjM5ODAiLCJpYXQiOjE2MjE4NjYyNzUsImV4cCI6MTYyMTg2OTg3NX0.hYISe8m4Nsc2hYGsKlG-VEPdDDPtuqLoQ07rfzdrw3I
 
-
+###
+GET https://zenquotes.io/api/random/
 
 
