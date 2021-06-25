@@ -1,7 +1,7 @@
 // IMPORTS
 const mongoose = require('mongoose');
 const Happy = require('../models/happy');
-
+const axios = require('axios')
 // GET ALL CONTROLLER
 //-------------------------------------//
 exports.happy_get_all = (req, res, next) => {
@@ -120,7 +120,11 @@ exports.happy_delete_one = (req, res, next) => {
 //   "gratitudeNote": "just blessed"
 // }
 
-exports.happy_add_one = (req, res, next) => {
+exports.happy_add_one = async (req, res, next) => {
+  // get a quote to insert into the record
+  const url = 'https://zenquotes.io/api/random/'
+  const quote =  await axios.get(url)
+  console.log('quote-->', ...quote.data )
   const happyRecord = new Happy({
     _id: new mongoose.Types.ObjectId(),
     date: Date.now(),
@@ -131,6 +135,11 @@ exports.happy_add_one = (req, res, next) => {
     exerciseLevel: req.body.exerciseLevel,
     kindnessNote: req.body.kindnessNote,
     gratitudeNote: req.body.gratitudeNote,
+    quote: {
+      quote: quote.data[0].q,
+      author: quote.data[0].a
+
+  }
   });
 
   happyRecord.save().then((result) => {

@@ -10,6 +10,10 @@ const happySchema = mongoose.Schema({
   exerciseLevel: String,
   kindnessNote: String,
   gratitudeNote: String,
+  quote: {
+    quote: String,
+    author: String
+  }
 });
 
 module.exports = mongoose.model('Happy', happySchema);
