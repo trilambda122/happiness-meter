@@ -7,14 +7,13 @@ const axios = require('axios')
 exports.happy_get_all = (req, res, next) => {
   Happy.find()
     .select(
-      '_id date happyScore sleepHours kindness exercise exerciseLevel kindnessNote gratitudeNote quote'
+      '_id date happyScore sleepHours kindness exercise exerciseLevel kindnessNote graditude gratitudeNote quote'
     )
     .exec()
     .then((results) => {
       const response = {
         count: results.length,
         happyItems: results.map((result) => {
-          
           return {
             _id: result._id,
             date: result.date,
@@ -22,6 +21,7 @@ exports.happy_get_all = (req, res, next) => {
             sleepHours: result.sleepHours,
             kindness: result.kindness,
             exercise: result.exercise,
+            graditude: result.graditude,
             exerciseLevel: result.exerciseLevel,
             kindnessNote: result.kindnessNote,
             gratitudeNote: result.gratitudeNote,
@@ -134,6 +134,7 @@ exports.happy_add_one = async (req, res, next) => {
     sleepHours: req.body.sleepHours,
     exercise: req.body.exercise,
     kindness: req.body.kindness,
+    graditude: req.body.graditude,
     exerciseLevel: req.body.exerciseLevel,
     kindnessNote: req.body.kindnessNote,
     gratitudeNote: req.body.gratitudeNote,
