@@ -3,8 +3,8 @@ const jwt = require("jsonwebtoken");
 
 module.exports = (req, res, next) => {
   try {
+    // console.log("REQ--->",req.params.userId)
     const cookieObj = parseCookie(req.headers.cookie);
-    console.log("TOKEN-> ", cookieObj.token);
     token = cookieObj.token
     // currently using httpOnly cookies for jwt token authorization. if you wish to use jwt tokens passed in the body comment the line below and uncommit the line below that .
     //  const token = req.headers.cookie.split("=")[1];

@@ -5,9 +5,9 @@ const axios = require('axios')
 // GET ALL CONTROLLER
 //-------------------------------------//
 exports.happy_get_all = (req, res, next) => {
-  Happy.find()
+  Happy.find().populate('user')
     .select(
-      '_id date happyScore sleepHours kindness exercise exerciseLevel kindnessNote graditude gratitudeNote quote'
+      '_id date happyScore sleepHours kindness exercise exerciseLevel kindnessNote graditude gratitudeNote quote user'
     )
     .exec()
     .then((results) => {
@@ -26,6 +26,7 @@ exports.happy_get_all = (req, res, next) => {
             kindnessNote: result.kindnessNote,
             gratitudeNote: result.gratitudeNote,
             quote: result.quote,
+            user: result.user,
             info: {
               type: 'GET',
               url: `http://localhost:5000/happy/${result._id}`,
@@ -46,6 +47,63 @@ exports.happy_get_all = (req, res, next) => {
       res.status(500).json({ error: err });
     });
 };
+
+
+
+// GET ALL ITEMS FOR A USER
+//-------------------------------------//
+//EXAMPLE URl:  
+
+exports.happy_get_all_user = (req, res, next) => {
+  const id = req.params.userId;
+  console.log("GETTING FOR USER--->", id)
+  Happy.find({user: {_id:`${id}`}}).populate('user')
+    .select(
+      '_id date happyScore sleepHours kindness exercise exerciseLevel kindnessNote graditude gratitudeNote quote user'
+    )
+    .exec()
+    .then((results) => {
+      const response = {
+        count: results.length,
+        happyItems: results.map((result) => {
+          return {
+            _id: result._id,
+            date: result.date,
+            happyScore: result.happyScore,
+            sleepHours: result.sleepHours,
+            kindness: result.kindness,
+            exercise: result.exercise,
+            graditude: result.graditude,
+            exerciseLevel: result.exerciseLevel,
+            kindnessNote: result.kindnessNote,
+            gratitudeNote: result.gratitudeNote,
+            quote: result.quote,
+            user: result.user,
+            info: {
+              type: 'GET',
+              url: `http://localhost:5000/happy/${result._id}`,
+            },
+          };
+        }),
+      };
+      if (results.length >= 0) {
+        res.status(200).json(response);
+      } else {
+        res.status(404).json({
+          message: 'No documents found... looks like the collection is empty',
+        });
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ error: err });
+    });
+};
+
+
+
+
+
 
 // GET ONE ITEM
 //-------------------------------------//
@@ -142,7 +200,8 @@ exports.happy_add_one = async (req, res, next) => {
       quote: quote.data[0].q,
       author: quote.data[0].a
 
-  }
+  },
+  user:req.body.user
   });
 
   happyRecord.save().then((result) => {
@@ -157,6 +216,8 @@ exports.happy_add_one = async (req, res, next) => {
         exerciseLevel: result.exerciseLevel,
         kindnessNote: result.kindnessNote,
         gratitudeNote: result.gratitudeNote,
+        quote:result.quote,
+        user: result.user,
         info: {
           type: 'GET',
           url: `http://localhost:5000/happy/${result._id}`,

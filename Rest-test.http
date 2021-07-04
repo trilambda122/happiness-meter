@@ -8,13 +8,26 @@ content-type: application/json
     
 }
 
-### ADD USER 
-POST  http://localhost:5443/users/signup
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImR1ZGVAc3NjaGlsbGluZy5jb20iLCJ1c2VySWQiOiI2MDgzMGY0NmM5N2M2MjY2NTg2ZjM5ODAiLCJpYXQiOjE2MjIyMjkxMTUsImV4cCI6MTYyMjIzMjcxNX0.3DN7Hiat_9jbWhMrutCFhzhi68cijiFn4SEBdUM5H30
+
+
+
+###
+ POST  http://localhost:5443/users/login HTTP/1.1
 content-type: application/json
 
 {
-    "email": "dude7@dude.com",
+    "email": "shane@dude.com",
+    "password": "dude"
+    
+}
+
+### ADD USER 
+POST  http://localhost:5443/users/signup
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImR1ZGVAc3NjaGlsbGluZy5jb20iLCJ1c2VySWQiOiI2MDgzMGY0NmM5N2M2MjY2NTg2ZjM5ODAiLCJpYXQiOjE2MjUzNDg0ODcsImV4cCI6MTYyNTM1MjA4N30.GhB9ZXbaytDgY5-cJZ9nXWX-F0rN9aKX2pjSiT8INfw
+content-type: application/json
+
+{
+    "email": "shane1@dude.com",
     "password": "dude"
     
 }
@@ -26,13 +39,17 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImR1ZGVAc
 GET  https://localhost:5443/happy/6082de6f6e15435dc84765a5
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImR1ZGVAc3NjaGlsbGluZy5jb20iLCJ1c2VySWQiOiI2MDgzMGY0NmM5N2M2MjY2NTg2ZjM5ODAiLCJpYXQiOjE2MjE4ODI5NTEsImV4cCI6MTYyMTg4NjU1MX0.gm0w2VBOxePPh3d98QFx2zZ30JHqcBRIZKQFcSG1JGE
 
-
 ### GET REQUEST THAT RETURNS ALL  HAPPY RECORDS 
 GET http://localhost:5443/happy/
-# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImR1ZGVAc3NjaGlsbGluZy5jb20iLCJ1c2VySWQiOiI2MDgzMGY0NmM5N2M2MjY2NTg2ZjM5ODAiLCJpYXQiOjE2MjIzOTY4OTAsImV4cCI6MTYyMjQwMDQ5MH0.lhhnJ2ziF8L7CdOtrrGdRYbLQ3dUAgfjSpdZbyFPFPA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImR1ZGVAc3NjaGlsbGluZy5jb20iLCJ1c2VySWQiOiI2MDgzMGY0NmM5N2M2MjY2NTg2ZjM5ODAiLCJpYXQiOjE2MjUzNDg0ODcsImV4cCI6MTYyNTM1MjA4N30.GhB9ZXbaytDgY5-cJZ9nXWX-F0rN9aKX2pjSiT8INfw
+
+
+### GET REQUEST FOR ALL HAPPY RECORDS FOR A USER
+GET http://localhost:5443/happy/user/60830f46c97c6266586f3980
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNoYW5lQGR1ZGUuY29tIiwidXNlcklkIjoiNjBlMGQ5OWZhMGRhM2Q0Mjg2M2M5YjIxIiwiaWF0IjoxNjI1NDI0Nzk1LCJleHAiOjE2MjU0MjgzOTV9.dyIdjyMG_mq1Z515HTB0qwIeGfJcS7uZ3_x7jmNLqRg
 ### POST REQUEST TO ADD A SINGLE HAPPY RECORD 
 POST http://localhost:5443/happy/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImR1ZGVAc3NjaGlsbGluZy5jb20iLCJ1c2VySWQiOiI2MDgzMGY0NmM5N2M2MjY2NTg2ZjM5ODAiLCJpYXQiOjE2MjQ2NTc1NjMsImV4cCI6MTYyNDY2MTE2M30.UlS5SoCVobgrbLzjRiGgeWs2Y6OILU7EczHsUdviCIc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImR1ZGVAc3NjaGlsbGluZy5jb20iLCJ1c2VySWQiOiI2MDgzMGY0NmM5N2M2MjY2NTg2ZjM5ODAiLCJpYXQiOjE2MjUzNDg0ODcsImV4cCI6MTYyNTM1MjA4N30.GhB9ZXbaytDgY5-cJZ9nXWX-F0rN9aKX2pjSiT8INfw
 content-type: application/json
 
 {
@@ -41,8 +58,10 @@ content-type: application/json
     "kindness": "true",
     "exercise": "true",
     "exerciseLevel": "high",
-    "kindnessNote": "doing some random act of kindness feel great!",
-    "gratitudeNote": "Loving IT!"
+    "kindnessNote": "doing some other random act of kindness feel great!",
+    "graditude" : "true",
+    "gratitudeNote": "Loving IT!",
+    "user": "60830f46c97c6266586f3980"
 } 
 
 ### UPDATE A HAPPINESS RECORD 
