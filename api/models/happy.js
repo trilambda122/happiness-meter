@@ -14,7 +14,8 @@ const happySchema = mongoose.Schema({
   quote: {
     quote: String,
     author: String
-  }
+  },
+  user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
 });
 
 module.exports = mongoose.model('Happy', happySchema);

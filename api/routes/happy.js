@@ -3,17 +3,21 @@ const express = require('express');
 const router = express.Router();
 const checkAuth = require('../middleware/check-auth');
 const happyController = require('../controllers/happyController');
-
+const checkUser = require('../middleware/check-user')
 // GET ALL ITEMS
 //-------------------------------------//
 ////EXAMPLE URl:  localhost:5000/happy/
 
 router.get('/', checkAuth, happyController.happy_get_all);
 
+// GET ALL ITEMS FOR A USER
+router.get('/user/:userId', checkAuth, checkUser,happyController.happy_get_all_user);
+
 // GET ONE ITEM
 //-------------------------------------//
 //EXAMPLE URl:  localhost:5000/happy/6082bf69ada1d25622423fa2
 router.get('/:happyId', checkAuth, happyController.happy_get_one);
+
 
 // PATCH UPDATE ONE ITEM
 //-------------------------------------//
@@ -36,5 +40,6 @@ router.delete('/:happyId', checkAuth, happyController.happy_delete_one);
 // POST ONE ITEM
 //-------------------------------------//
 router.post('/', checkAuth, happyController.happy_add_one);
+
 
 module.exports = router;
