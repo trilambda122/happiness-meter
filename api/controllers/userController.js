@@ -121,6 +121,7 @@ exports.user_login = (req, res, next) => {
           return res.status(200).cookie('token',token,{ maxAge: 3600000, httpOnly: true, secure: false }).json({
             message: 'Authorization Success!',
             token: token,
+            userId: user[0]._id
           });
         }
         return res.status(401).json({

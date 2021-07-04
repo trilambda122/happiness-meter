@@ -8,9 +8,6 @@ content-type: application/json
     
 }
 
-
-
-
 ###
  POST  http://localhost:5443/users/login HTTP/1.1
 content-type: application/json
@@ -20,7 +17,7 @@ content-type: application/json
     "password": "dude"
     
 }
-
+//------------------------------------
 ### ADD USER 
 POST  http://localhost:5443/users/signup
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImR1ZGVAc3NjaGlsbGluZy5jb20iLCJ1c2VySWQiOiI2MDgzMGY0NmM5N2M2MjY2NTg2ZjM5ODAiLCJpYXQiOjE2MjUzNDg0ODcsImV4cCI6MTYyNTM1MjA4N30.GhB9ZXbaytDgY5-cJZ9nXWX-F0rN9aKX2pjSiT8INfw
